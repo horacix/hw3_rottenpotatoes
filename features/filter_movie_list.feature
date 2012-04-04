@@ -22,14 +22,11 @@ Background: movies have been added to database
   And  I am on the RottenPotatoes home page
   
 Scenario: restrict to movies with 'PG' or 'R' ratings
-  Given I check "ratings_PG"
-  And I check "ratings_R"
-  And I uncheck "ratings_G"
-  And I uncheck "ratings_PG-13"
-  And I uncheck "ratings_NC-17"
+  Given I check the following ratings: PG, R
+  And I uncheck the following ratings: G, PG-13, NC-17
   When I press "Refresh"
-  Then I should see "Incredibles"
-  But I should not see "Terminator"
+  Then I should see "The Incredibles"
+  But I should not see "The Help"
 
 Scenario: no ratings selected
   # see assignment
